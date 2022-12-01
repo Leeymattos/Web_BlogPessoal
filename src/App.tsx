@@ -1,11 +1,12 @@
 import { CssBaseline } from "@mui/material"
-import Home from "./pages/Home"
+import AppRoutes from "./routes"
+import './styles/global.css'
 
 function App() {
   return (
     <>
       <CssBaseline />
-      <Home />
+      <AppRoutes />
     </>
   )
 }
