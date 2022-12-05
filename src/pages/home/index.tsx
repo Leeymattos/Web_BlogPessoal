@@ -1,9 +1,9 @@
 import React from 'react'
 import { Box, Button, Grid, Typography } from "@mui/material";
-import Navbar from "../components/stactic/navbar";
-import people from '../assets/people.png'
-import Footer from "../components/stactic/footer";
-
+import Navbar from "../../components/stactic/navbar";
+import Footer from "../../components/stactic/footer";
+import PostTab from '../../components/posts/postTab';
+import { Link } from 'react-router-dom';
 export default function Home() {
   return (
     <>
@@ -17,13 +17,18 @@ export default function Home() {
           <Box display="flex" justifyContent="center">
             <Box marginRight={1}>
             </Box>
-            <Button variant="outlined" style={{ borderColor: "white", backgroundColor: "#3F51B5", color: "white" }}>Ver Postagens</Button>
+            <Link to="/themes">
+              <Button variant="outlined" style={{ borderColor: "white", backgroundColor: "#3F51B5", color: "white" }}>
+                Ver Postagens
+              </Button>
+            </Link>
           </Box>
         </Grid>
         <Grid item xs={6} >
-          <img src={people} alt="people" width="500px" height="500px" />
+          <img src="/people.png" alt="people" width="500px" height="500px" />
         </Grid>
         <Grid xs={12} style={{ backgroundColor: "white" }}>
+          <PostTab />
         </Grid>
       </Grid>
       <Footer />
