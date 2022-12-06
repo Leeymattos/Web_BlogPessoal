@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { AppBar, Box, Tab, Tabs, Typography } from '@mui/material';
 import { TabContext, TabPanel } from '@mui/lab';
-import PostList from '../postList'
+import PostList from '../listPost'
 
 export default function PostTab() {
   const [value, setValue] = useState('1')

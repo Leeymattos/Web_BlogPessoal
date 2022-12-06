@@ -12,11 +12,21 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { Link, useNavigate } from 'react-router-dom';
+import useLocalStorage from 'react-use-localstorage';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = [
+    { page: 'HOME', to: '/home' },
+    { page: 'POSTAGENS', to: '/posts' },
+    { page: 'TEMAS', to: '/themes' },
+    { page: 'CADASTRAR TEMA', to: '/formTheme' }
+]
+
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function Navbar() {
+    const navigate = useNavigate();
+    const [token, setToken] = useLocalStorage('token');
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -31,9 +41,18 @@ export default function Navbar() {
         setAnchorElNav(null);
     };
 
+    function handleLougout() {
+        setToken('');
+        alert('Usuário deslogado');
+        navigate('/')
+    }
+
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
+        handleLougout();
     };
+
+
 
     return (
         <AppBar position="static" sx={{ backgroundColor: "#000" }}>
@@ -55,7 +74,7 @@ export default function Navbar() {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        BlogPessoal
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -88,9 +107,13 @@ export default function Navbar() {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+
+                                <MenuItem key={page.page} onClick={handleCloseNavMenu}>
+                                    <Link to={page.to}>
+                                        <Typography textAlign="center">{page.page}</Typography>
+                                    </Link>
                                 </MenuItem>
+
                             ))}
                         </Menu>
                     </Box>
@@ -111,17 +134,19 @@ export default function Navbar() {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        BlogPessoal
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
+                            <Link to={page.to}>
+                                <Button
+                                    key={page.page}
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, color: 'white', display: 'block' }}
+                                >
+                                    {page.page}
+                                </Button>
+                            </Link>
                         ))}
                     </Box>
 

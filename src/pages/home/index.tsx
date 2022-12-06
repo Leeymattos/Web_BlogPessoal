@@ -2,12 +2,11 @@ import React from 'react'
 import { Box, Button, Grid, Typography } from "@mui/material";
 import Navbar from "../../components/stactic/navbar";
 import Footer from "../../components/stactic/footer";
-import PostTab from '../../components/posts/postTab';
+import PostTab from '../../components/posts/tabPost';
 import { Link } from 'react-router-dom';
 export default function Home() {
   return (
     <>
-      <Navbar />
       <Grid container direction="row" justifyContent="center" alignItems="center" style={{ backgroundColor: "#3F51B5" }}>
         <Grid alignItems="center" item xs={6}>
           <Box paddingX={20} >

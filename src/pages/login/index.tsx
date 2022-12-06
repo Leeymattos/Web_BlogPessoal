@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { api } from '../../services/api';
 import './style.css';
+import useLocalStorage from 'react-use-localstorage';
 
 type FormValues = {
   email: string
@@ -13,6 +14,7 @@ type FormValues = {
 }
 
 export default function Login() {
+  const [token, setToken] = useLocalStorage('token');
   const navigate = useNavigate();
 
   const { register, handleSubmit } = useForm<FormValues>();
@@ -22,7 +24,7 @@ export default function Login() {
 
       const res = await api.post('auth/login', data);
 
-      localStorage.setItem("token", res.data.token);
+      setToken(res.data.token);
 
       navigate('/home');
 
