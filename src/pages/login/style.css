@@ -1,8 +1,0 @@
-.image {
-  background-image: url(book.jpg);
-  background-repeat: no-repeat;
-  width: 100vh;
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center;
-}
