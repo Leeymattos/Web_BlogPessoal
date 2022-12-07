@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button, Modal, Theme } from '@mui/material';
+import { Box, Button, Modal, Theme, styled } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import './ModalPostagem.css';
 import CadastroPost from '../cadastroPost/CadastroPost';
@@ -16,21 +16,17 @@ function getModalStyle() {
   };
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    paper: {
-      position: 'absolute',
-      width: 400,
-      backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
-    },
-  }),
-);
-
 function ModalPostagem() {
-  const classes = useStyles();
+
+  const Div = styled("div")(({ theme }) => ({
+    position: 'absolute',
+    width: '40%',
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  }))
+
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
 
@@ -43,7 +39,7 @@ function ModalPostagem() {
   };
 
   const body = (
-    <div style={modalStyle} >
+    <Div style={modalStyle} >
       <Box display="flex" justifyContent="flex-end" className="cursor">
         <CloseIcon onClick={handleClose} />
 
@@ -51,7 +47,7 @@ function ModalPostagem() {
 
       <CadastroPost />
 
-    </div>
+    </Div>
   );
 
   return (

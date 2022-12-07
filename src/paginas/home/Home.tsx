@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { Typography, Grid, Button } from '@mui/material';
 import { Box } from '@mui/material';
 import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem';
-import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem';
 import './Home.css';
 import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokens/tokensReducer';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem';
 
 function Home() {
 
@@ -43,7 +43,7 @@ function Home() {
           </Box>
           <Box display="flex" justifyContent="center">
             <Box marginRight={1}>
-
+              <ModalPostagem />
             </Box>
             <Link to="/posts" className="text-decorator-none">
               <Button variant="outlined" className='botao'>Ver Postagens</Button>
